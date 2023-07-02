@@ -1,1 +1,0 @@
-{"v":3,"stories":{"task--default":{"id":"task--default","title":"Task","name":"Default","importPath":"./src/components/Task.stories.js","tags":["story"],"kind":"Task","story":"Default","parameters":{"__id":"task--default","docsOnly":false,"fileName":"./src/components/Task.stories.js"}}}}
