@@ -27,7 +27,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "test-storybook": "test-storybook --watchAll",
+    "test-storybook": "test-storybook",
     "build-storybook": "storybook build",
     "init-msw": "msw init public/",
     "chromatic": "npx chromatic --project-token=chpt_bf8901dcafd8c55 --storybook-build-dir ./storybook-static"
