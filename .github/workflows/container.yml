@@ -8,6 +8,7 @@ jobs:
       volumes:
         - ${{github.workspace}}:/__w/taskbox/taskbox
     steps:
+      - uses: actions/checkout@v2
       - name: Log node version
         run: |
           node -v
