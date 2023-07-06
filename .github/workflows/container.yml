@@ -10,4 +10,4 @@ jobs:
         run: |
           node -v
           npm -v
-          npm ci
+          yarn
