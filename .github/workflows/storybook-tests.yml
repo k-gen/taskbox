@@ -34,6 +34,10 @@ jobs:
             ./storybook-static/__screenshots__
             ./storybook-static/__diff__
           retention-days: 5
+      - name: Git config set
+        run: |
+          git config user.email "you@example.com" \
+          git config user.name "Your Name"
       - name: deploy github pages
         run: npm run deploy
       - if: ${{ steps.vrt.outcome != 'success' }}
