@@ -4,6 +4,8 @@ jobs:
   # Run interaction and accessibility and visual regression tests
   storybook-build-and-tests:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
