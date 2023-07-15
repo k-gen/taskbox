@@ -29,10 +29,12 @@ jobs:
         with:
           name: vrt-report
           path: |
-            report.html
-            __actual__
-            __screenshots__
-            __diff__
+            ./storybook-static/report.html
+            ./storybook-static/__actual__
+            ./storybook-static/__screenshots__
+            ./storybook-static/__diff__
           retention-days: 5
+      - name: deploy github pages
+        run: npm run deploy
       - if: ${{ steps.vrt.outcome != 'success' }}
         run: exit 1
