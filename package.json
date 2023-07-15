@@ -20,7 +20,9 @@
     "@reduxjs/toolkit": "^1.9.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.1.0"
+    "react-redux": "^8.1.0",
+    "reg-cli": "^0.17.7",
+    "storycap": "^4.1.2"
   },
   "scripts": {
     "dev": "vite",
@@ -29,8 +31,13 @@
     "storybook": "storybook dev -p 6006",
     "test-storybook": "test-storybook",
     "build-storybook": "storybook build",
+    "predeploy": "npm run build-storybook && touch ./storybook-static/.nojekyll",
+    "deploy": "gh-pages -d storybook-static -t true",
     "init-msw": "msw init public/",
-    "chromatic": "npx chromatic --project-token=chpt_bf8901dcafd8c55 --storybook-build-dir ./storybook-static"
+    "chromatic": "npx chromatic --project-token=chpt_bf8901dcafd8c55 --storybook-build-dir ./storybook-static",
+    "snapshot": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006",
+    "snapshot:ci": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006 -o __actual__",
+    "vrt": "reg-cli __actual__ __screenshots__ __diff__ -R report.html"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^7.0.21",
@@ -47,6 +54,7 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
     "chromatic": "^6.19.8",
+    "gh-pages": "^5.0.0",
     "msw": "^1.2.1",
     "msw-storybook-addon": "^1.8.0",
     "prop-types": "^15.8.1",
