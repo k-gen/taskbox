@@ -36,6 +36,8 @@ jobs:
             vrt/__screenshots__
             vrt/__diff__
           retention-days: 5
+      - name: Copy vrt dir
+        run: cp -r ${{github.workspace}}/vrt ${{github.workspace}}/storybook-static
       - name: Deploy storybook
         uses: peaceiris/actions-gh-pages@v3
         with:

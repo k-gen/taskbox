@@ -37,7 +37,7 @@
     "chromatic": "npx chromatic --project-token=chpt_bf8901dcafd8c55 --storybook-build-dir ./storybook-static",
     "snapshot": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006 -o vrt/__screenshots__ --delay 1500",
     "snapshot:ci": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006 -o vrt/__actual__ --delay 1500",
-    "vrt": "reg-cli vrt/__actual__ vrt/__screenshots__ vrt/__diff__ -R vrt/report.html && cp -r ./vrt ./storybook-static"
+    "vrt": "reg-cli vrt/__actual__ vrt/__screenshots__ vrt/__diff__ -R vrt/report.html"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^7.0.21",
