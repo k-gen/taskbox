@@ -36,6 +36,8 @@ jobs:
             ./__screenshots__
             ./storybook-static/__diff__
           retention-days: 5
+      - name: Copy screenshots dir
+        run: cp -r ${{ github.workspace }}/__screenshots__ ${{ github.workspace }}/storybook-static
       - name: Deploy storybook
         uses: peaceiris/actions-gh-pages@v3
         with:
