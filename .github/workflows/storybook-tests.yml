@@ -34,24 +34,10 @@ jobs:
             ./storybook-static/__screenshots__
             ./storybook-static/__diff__
           retention-days: 5
+      - name: Deploy storybook
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secret.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static
       - if: ${{ steps.vrt.outcome != 'success' }}
         run: exit 1
-  deploy:
-    environment:
-      name: github-pages
-      url: $
-    runs-on: ubuntu-latest
-    needs: storybook-build-and-tests
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          # upload entire directory
-          path: './storybook-static'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
