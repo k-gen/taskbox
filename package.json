@@ -35,9 +35,9 @@
     "deploy": "gh-pages -d storybook-static -t true",
     "init-msw": "msw init public/",
     "chromatic": "npx chromatic --project-token=chpt_bf8901dcafd8c55 --storybook-build-dir ./storybook-static",
-    "snapshot": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006 -o ./storybook-static/__screenshots__ --delay 1500",
+    "snapshot": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006 --delay 1500",
     "snapshot:ci": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006 -o ./storybook-static/__actual__ --delay 1500",
-    "vrt": "reg-cli ./storybook-static/__actual__ ./storybook-static/__screenshots__ ./storybook-static/__diff__ -R ./storybook-static/report.html"
+    "vrt": "reg-cli ./storybook-static/__actual__ ./__screenshots__ ./storybook-static/__diff__ -R ./storybook-static/report.html"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^7.0.21",

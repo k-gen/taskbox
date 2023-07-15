@@ -25,7 +25,6 @@ yarn-error.log*
 
 #static
 storybook-static/*
-!storybook-static/__screenshots__
 build-storybook.log
 __actual__
 __diff__

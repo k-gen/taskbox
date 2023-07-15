@@ -33,7 +33,7 @@ jobs:
           path: |
             ./storybook-static/report.html
             ./storybook-static/__actual__
-            ./storybook-static/__screenshots__
+            ./__screenshots__
             ./storybook-static/__diff__
           retention-days: 5
       - name: Deploy storybook
