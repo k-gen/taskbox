@@ -31,10 +31,10 @@ jobs:
         with:
           name: vrt-report
           path: |
-            ./storybook-static/report.html
-            ./storybook-static/__actual__
-            ./storybook-static/__screenshots__
-            ./storybook-static/__diff__
+            vrt/report.html
+            vrt/__actual__
+            vrt/__screenshots__
+            vrt/__diff__
           retention-days: 5
       - name: Deploy storybook
         uses: peaceiris/actions-gh-pages@v3
