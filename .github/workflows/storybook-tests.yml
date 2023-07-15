@@ -2,7 +2,7 @@ name: 'Storybook Tests'
 on: push
 jobs:
   # Run interaction and accessibility and visual regression tests
-  storybook-tests:
+  storybook-build-and-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -34,11 +34,23 @@ jobs:
             ./storybook-static/__screenshots__
             ./storybook-static/__diff__
           retention-days: 5
-      - name: Git config set
-        run: |
-          git config --global user.email ${{ secrets.EMAIL }}
-          git config --global user.name ${{ secrets.NAME }}
-      - name: deploy github pages
-        run: npm run deploy
       - if: ${{ steps.vrt.outcome != 'success' }}
         run: exit 1
+  deploy:
+    environment:
+      name: github-pages
+      url: $
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # upload entire directory
+          path: './storybook-static'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
