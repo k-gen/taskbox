@@ -35,8 +35,8 @@
     "deploy": "gh-pages -d storybook-static -t true",
     "init-msw": "msw init public/",
     "chromatic": "npx chromatic --project-token=chpt_bf8901dcafd8c55 --storybook-build-dir ./storybook-static",
-    "snapshot": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006",
-    "snapshot:ci": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006 -o __actual__",
+    "snapshot": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006 --delay 1500",
+    "snapshot:ci": "storycap --serverCmd \"cd ./storybook-static && npx http-server storybook-static --port 6006\" http://localhost:6006 -o __actual__ --delay 1500",
     "vrt": "reg-cli __actual__ __screenshots__ __diff__ -R report.html"
   },
   "devDependencies": {
