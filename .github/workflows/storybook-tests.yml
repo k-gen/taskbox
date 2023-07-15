@@ -1,8 +1,8 @@
 name: 'Storybook Tests'
 on: push
 jobs:
-  # Run interaction and accessibility tests
-  interaction-and-accessibility:
+  # Run interaction and accessibility and visual regression tests
+  storybook-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,3 +20,21 @@ jobs:
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:6006 && yarn test-storybook"
+      - name: Capture UI Images
+        run: npm run snapshot:ci
+      - name: Run VRT
+        id: vrt
+        run: npm run vrt
+        continue-on-error: true
+      - name: upload report
+        uses: actions/upload-artifact@v2
+        with:
+          name: vrt-report
+          path: |
+            report.html
+            __actual__
+            __screenshots__
+            __diff__
+          retention-days: 5
+      - if: ${{ steps.vrt.outcome != 'success' }}
+        run: exit 1
